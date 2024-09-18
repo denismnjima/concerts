@@ -1,11 +1,11 @@
-from db_connection import get_connection
+from db_connection import database_connect
 
 class Venues:
     def __init__(self, id):
         self.id = id
     
     def bands(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -23,7 +23,7 @@ class Venues:
         else:
             return []
     def concerts(self):
-             conn = get_connection()
+             conn = database_connect()
              if conn is not None:
                  cur = conn.cursor()
                  cur.execute(('''
@@ -44,7 +44,7 @@ class Venues:
         
 #Venue.concert_on(date): takes a date (string) as an argument and finds the first concert on that date at the venue.
     def concert_on(self, date):
-         conn = get_connection()
+         conn = database_connect()
          if conn is not None:
              cur = conn.cursor()
              cur.execute(('''
@@ -64,7 +64,7 @@ class Venues:
              return None
 #Venue.most_frequent_band(): returns the band that has performed the most at the venue. You will need to count how many times each band has performed at this venue using a SQL GROUP BY query.
     def most_frequent_band(self):
-         conn = get_connection()
+         conn = database_connect()
          if conn is not None:
              cur = conn.cursor()
              cur.execute(('''

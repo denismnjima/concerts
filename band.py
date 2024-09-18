@@ -1,12 +1,10 @@
-from db_connection import get_connection
+from db_connection import database_connect
 
 class Band:
     def __init__(self,id):
         self.id = id
-        #self.name = name
-        #self.hometown = hometown
     def concerts(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -25,7 +23,7 @@ class Band:
         else:
             return []
     def venues(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -44,7 +42,7 @@ class Band:
             return []
         
     def play_in_venue(self, venue, date, concert_name):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -58,7 +56,7 @@ class Band:
         else:
             return False
     def all_introductions(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -75,7 +73,5 @@ class Band:
             cur.close()
             conn.close()
             return f"Hello {hometown[1]}!!!!! We are {hometown[2]} and we're from {hometown[0]}"
-first_band = Band(1)
-print(f"venues by {first_band.venues()}")
-first_band.play_in_venue(1, "2", "RHEMA FESTIVAL")
-print(f"{first_band.all_introductions()}")
+
+

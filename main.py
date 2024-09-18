@@ -1,6 +1,6 @@
-from db_connection import get_connection
+from db_connection import database_connect
 
-conn = get_connection()
+conn = database_connect()
 
 def add_venue():
     if conn is not None:

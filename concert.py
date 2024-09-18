@@ -1,4 +1,4 @@
-from db_connection import get_connection
+from db_connection import database_connect
 
 class Concert:
     def __init__(self, id, hometown="",  city="", band_name="",):
@@ -9,7 +9,7 @@ class Concert:
 
     
     def band(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -26,7 +26,7 @@ class Concert:
             return None
         
     def venue(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -43,7 +43,7 @@ class Concert:
             return None
     
     def hometown_show(self):
-        conn = get_connection()
+        conn = database_connect()
         if conn is not None:
             cur = conn.cursor()
             cur.execute(('''
@@ -73,7 +73,7 @@ class Concert:
         
 
     def most_performances(self):
-         conn = get_connection()
+         conn = database_connect()
          if conn is not None:
              cur = conn.cursor()
              cur.execute(('''

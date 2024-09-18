@@ -1,15 +1,14 @@
 import psycopg2
 from psycopg2 import sql
 
-def get_connection():
-    """Create and return a connection to the PostgreSQL database."""
+def database_connect():
     try:
         conn = psycopg2.connect(
-            dbname="postgres",
+            dbname="concert",
             user="postgres",
-            password="joshualee087",
-            host="localhost",     # e.g., "localhost"
-            port="5432"      # e.g., "5432"
+            password="pass",
+            host="localhost",  
+            port="5432"      
         )
         return conn
     except Exception as e:
